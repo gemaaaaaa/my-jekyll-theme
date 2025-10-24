@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<section class="flex-1 px-0 sm:px-4 md:px-6 py-6 sm:py-8">
+  <div class="flex flex-col sm:flex-row sm:items-center gap-2 px-4 sm:px-0">
+    <div class="flex items-center gap-2">
+      <p class="text-primary text-sm sm:text-base font-mono">user@blog:~$</p>
+      <div class="animate-pulse bg-white w-2 h-4 sm:hidden"></div>
+    </div>
+    <p class="text-white text-sm sm:text-base leading-relaxed">Access granted. Enjoy the posts below.</p>
+    <div class="hidden sm:block animate-pulse bg-white w-2 h-4 ml-1"></div>
+  </div>
+  
+  <div class="mt-6 sm:mt-8 space-y-1 sm:space-y-2">
+    {%- if site.posts.size > 0 -%}
+      {%- for post in site.posts -%}
+      <a href="{{ post.url | relative_url }}" class="block">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-4 sm:px-4 py-3 sm:py-0 sm:min-h-14 hover:bg-[#1a3326] rounded-lg sm:rounded-none transition-colors">
+          <div class="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+            <span class="text-primary material-symbols-outlined text-xl sm:text-2xl flex-shrink-0">chevron_right</span>
+            <span class="text-white text-sm sm:text-base font-normal leading-normal truncate hover:text-primary transition-colors">
+              {{ post.title | escape }}
+            </span>
+          </div>
+          <div class="pl-8 sm:pl-0 sm:shrink-0">
+            <p class="text-[#96c5a9] text-xs sm:text-sm font-normal leading-normal">{{ post.date | date: "%b %-d, %Y" }}</p>
+          </div>
+        </div>
+      </a>
+      {%- endfor -%}
+    {%- else -%}
+      <div class="px-4 py-8 text-center">
+        <p class="text-[#96c5a9] text-sm sm:text-base">No posts found. Start writing!</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>

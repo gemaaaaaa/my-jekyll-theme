@@ -1,0 +1,11 @@
+<footer class="text-center border-t border-solid border-t-[#264532] mt-auto py-3 px-4">
+  <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mb-3">
+    {%- include social.html -%}
+  </div>
+  
+  <p class="text-gray-500 text-xs sm:text-sm leading-relaxed">
+    {%- if site.author -%}
+      © {{ site.time | date: '%Y' }} {{ site.author | escape }}. All rights reserved.
+    {%- endif -%}
+  </p>
+</footer>
