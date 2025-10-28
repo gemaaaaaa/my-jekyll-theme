@@ -24,8 +24,8 @@ excerpt_separator: <!-- break -->
 
 # Pages to display in header navigation
 # Uncomment and add page paths in desired order
-# header_pages:
-#   - about.html
+header_pages:
+  - about.md
 
 # Pagination settings
 paginate: 10              # Number of posts per page
