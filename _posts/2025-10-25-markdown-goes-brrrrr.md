@@ -2,6 +2,7 @@
 layout: post
 title: "Markdown Goes Brrrrr"
 date: 2025-10-25 00:00:01 +0700
+excerpt: "A comprehensive showcase of markdown syntax including headings, text formatting, lists, code blocks, tables, and advanced features."
 ---
 
 # Heading 1
