@@ -17,6 +17,11 @@ twitter_username: jekyllrb
 # instagram_username: 
 # linkedin_username: 
 
+# Show excerpt (preview) of posts on homepage
+# Set to true to display a short preview of each post
+show_excerpts: true
+excerpt_separator: <!-- break -->
+
 # Pages to display in header navigation
 # Uncomment and add page paths in desired order
 # header_pages:
