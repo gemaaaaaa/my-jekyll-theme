@@ -1,0 +1,42 @@
+---
+layout: default
+title: 404 - Page Not Found
+permalink: /404.html
+---
+
+<div class="px-4 sm:px-6 md:px-8 flex items-center justify-center min-h-[calc(100vh-200px)]">
+    <div class="text-center">
+        <pre class="text-primary font-mono text-xs sm:text-sm md:text-base mb-8 overflow-x-auto inline-block mx-auto">
+            <code>
+ _  _    ___  _  _   
+| || |  / _ \| || |  
+| || |_| | | | || |_ 
+|__   _| |_| |__   _|
+   |_|  \___/   |_|  
+   
+            </code>
+        </pre>
+
+        <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+            Page Not Found
+        </h1>
+
+        <p class="text-[#96c5a9] text-base sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+            The page you're looking for doesn't exist or has been moved.
+        </p>
+
+        <div class="flex flex-row gap-3 sm:gap-4 justify-center items-center">
+            <a href="{{ '/' | relative_url }}"
+                class="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-primary text-background-dark text-sm sm:text-base font-medium rounded-lg hover:bg-[#a8d5ba] transition-colors">
+                <span class="material-symbols-outlined" style="font-size: 20px;">home</span>
+                Go Home
+            </a>
+
+            <a href="javascript:history.back()"
+                class="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 border border-primary text-primary text-sm sm:text-base font-medium rounded-lg hover:bg-[#264532] transition-colors">
+                <span class="material-symbols-outlined" style="font-size: 20px;">arrow_back</span>
+                Go Back
+            </a>
+        </div>
+    </div>
+</div>
