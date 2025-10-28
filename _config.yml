@@ -22,6 +22,10 @@ twitter_username: jekyllrb
 # header_pages:
 #   - about.html
 
+# Pagination settings
+paginate: 10              # Number of posts per page
+paginate_path: "/page/:num/"  # URL path for pagination pages
+
 # Permalink format for post URLs
 # /:title/ will generate URLs like: example.com/post-title/
 permalink: /:title/

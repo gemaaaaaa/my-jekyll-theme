@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<section class="flex-1 px-0 sm:px-4 md:px-6 py-6 sm:py-8">
+<section class="flex-1 flex flex-col px-0 sm:px-4 md:px-6 pt-6 sm:pt-8 pb-0">
   <div class="flex flex-row items-center gap-2 px-4 sm:px-0 flex-wrap">
     <div class="flex items-center gap-2">
       <p class="text-primary text-sm sm:text-base font-mono">user@blog:~$</p>
@@ -12,8 +12,8 @@ layout: default
   </div>
   
   <div class="mt-6 sm:mt-8 space-y-1 sm:space-y-2">
-    {%- if site.posts.size > 0 -%}
-      {%- for post in site.posts -%}
+    {%- if paginator.posts.size > 0 -%}
+      {%- for post in paginator.posts -%}
       <a href="{{ post.url | relative_url }}" class="block">
         <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 px-4 sm:px-4 py-3 sm:py-4 hover:bg-[#1a3326] rounded-lg sm:rounded-none transition-colors">
           <div class="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
@@ -34,4 +34,72 @@ layout: default
       </div>
     {%- endif -%}
   </div>
+  
+  {% if paginator.total_pages > 1 %}
+  <div class="mt-auto mb-4 px-4">
+    <div class="flex items-center justify-center gap-2 flex-wrap">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="flex items-center gap-1 px-3 py-2 text-primary hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-lg">chevron_left</span>
+        </a>
+      {% else %}
+        <span class="flex items-center gap-1 px-3 py-2 text-[#4a7357] cursor-not-allowed">
+          <span class="material-symbols-outlined text-lg">chevron_left</span>
+        </span>
+      {% endif %}
+
+      {% assign current_page = paginator.page %}
+      {% assign total_pages = paginator.total_pages %}
+      
+      {% if current_page == 1 %}
+        <span class="px-3 py-2 bg-primary/20 text-primary text-sm min-w-[40px] text-center">1</span>
+      {% else %}
+        <a href="{{ '/' | relative_url }}" class="px-3 py-2 text-[#96c5a9] hover:text-primary text-sm min-w-[40px] text-center transition-colors">1</a>
+      {% endif %}
+
+      {% if current_page > 3 %}
+        <span class="px-2 text-[#96c5a9] text-sm">...</span>
+      {% endif %}
+
+      {% for page in (2..total_pages) %}
+        {% if page == total_pages %}
+          {% break %}
+        {% endif %}
+        
+        {% assign diff = page | minus: current_page %}
+        {% if diff >= -1 and diff <= 1 %}
+          {% if page == current_page %}
+            <span class="px-3 py-2 bg-primary/20 text-primary text-sm min-w-[40px] text-center">{{ page }}</span>
+          {% else %}
+            <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="px-3 py-2 text-[#96c5a9] hover:text-primary text-sm min-w-[40px] text-center transition-colors">{{ page }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign next_page = current_page | plus: 1 %}
+      {% assign page_before_last = total_pages | minus: 1 %}
+      {% if next_page < page_before_last %}
+        <span class="px-2 text-[#96c5a9] text-sm">...</span>
+      {% endif %}
+
+      {% if total_pages > 1 %}
+        {% if current_page == total_pages %}
+          <span class="px-3 py-2 bg-primary/20 text-primary text-sm min-w-[40px] text-center">{{ total_pages }}</span>
+        {% else %}
+          <a href="{{ site.paginate_path | relative_url | replace: ':num', total_pages }}" class="px-3 py-2 text-[#96c5a9] hover:text-primary text-sm min-w-[40px] text-center transition-colors">{{ total_pages }}</a>
+        {% endif %}
+      {% endif %}
+
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}" class="flex items-center gap-1 px-3 py-2 text-primary hover:text-white transition-colors">
+          <span class="material-symbols-outlined text-lg">chevron_right</span>
+        </a>
+      {% else %}
+        <span class="flex items-center gap-1 px-3 py-2 text-[#4a7357] cursor-not-allowed">
+          <span class="material-symbols-outlined text-lg">chevron_right</span>
+        </span>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
 </section>
