@@ -26,6 +26,7 @@ excerpt_separator: <!-- break -->
 # Uncomment and add page paths in desired order
 header_pages:
   - about.md
+  - profile.md
 
 # Pagination settings
 paginate: 10              # Number of posts per page
